@@ -1,0 +1,19 @@
+{
+  "name": "fullstackreactprojects",
+  "private": true,
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "husky": "^9.0.0",
+    "lint-staged": "^16.0.0"
+  },
+  "lint-staged": {
+    "ch1/**/*.{js,jsx}": [
+      "npm run format --prefix ch1",
+      "npm run lint --prefix ch1"
+    ]
+  },
+  "scripts": {
+    "prepare": "husky"
+  }
+}
