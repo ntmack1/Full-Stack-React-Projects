@@ -1,3 +1,4 @@
+import styles from './Blog.module.css'
 import { PostList } from './components/PostList.jsx'
 import { CreatePost } from './components/CreatePost.jsx'
 import { PostSorting } from './components/PostSorting.jsx'
@@ -19,7 +20,7 @@ export function Blog() {
   const posts = postsQuery.data ?? []
 
   return (
-    <div style={{ padding: 8 }}>
+    <div className={styles.page}>
       <CreatePost />
       <br />
       <hr />
