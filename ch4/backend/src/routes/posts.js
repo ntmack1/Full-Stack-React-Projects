@@ -59,7 +59,7 @@ export function postsRoutes(app) {
       return res.json(post)
     } catch (err) {
       console.error('error updating post', err)
-      return res.status(500).edn()
+      return res.status(500).end()
     }
   })
 
