@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
+          cache-dependency-path: ch5/backend/package-lock.json
       - name: Install dependencies
         run: npm install
       - name: Run linter
