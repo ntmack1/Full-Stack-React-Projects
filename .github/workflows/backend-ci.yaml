@@ -1,5 +1,4 @@
 name: Blog Backend CI
-
 on:
   push:
     branches: [main]
@@ -10,7 +9,6 @@ on:
     paths:
       - "ch5/backend/**"
   workflow_dispatch: {}
-
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
