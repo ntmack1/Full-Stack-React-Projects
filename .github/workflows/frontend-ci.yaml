@@ -1,27 +1,35 @@
 name: Blog Frontend CI
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - "ch5/frontend/**"
   pull_request:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - "ch5/frontend/**"
+  workflow_dispatch: {}
+
 jobs:
   lint-and-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x, 18.x, 20.x]
+    defaults:
+      run:
+        working-directory: ch5/frontend
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - name: Install dependecies
-        run: npm Install
-      - name: Run linter on Frontend
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Run linter
         run: npm run lint
-      - name: Build Frontend
+      - name: Build frontend
         run: npm run build
