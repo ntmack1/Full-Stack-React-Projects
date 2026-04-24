@@ -1,0 +1,32 @@
+services:
+  blog-database:
+    image: mongo
+    expose:
+      - '27017'   # internal only
+    volumes:
+      - mongo-data:/data/db
+
+  blog-backend:
+    build: backend/
+    environment:
+      - PORT=3001
+      - DATABASE_URL=mongodb://blog-database:27017/blog
+    expose:
+      - '3001'    # internal only
+    depends_on:
+      - blog-database
+
+  blog-frontend:
+    build:
+      context: .
+      args:
+        VITE_BACKEND_URL: /api/v1
+    ports:
+      - '3000:80'   # public
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - blog-backend
+
+volumes:
+  mongo-data:
