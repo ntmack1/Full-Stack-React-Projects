@@ -1,4 +1,4 @@
-name: Deploy Blog Application
+name: Deploy the Blog Application
 on:
   push:
     branches:
